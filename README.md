@@ -1,2 +1,2 @@
 # Gym-web
-This project is created for management athletes 
+This project is designed for managing athletes.
