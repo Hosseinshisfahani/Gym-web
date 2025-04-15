@@ -1,0 +1,18 @@
+{% extends 'parent/base.html' %}
+{% block title %}profile{% endblock %}
+{% block content %}
+
+<h1>ایجاد یا ویرایش اطلاعات</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+	{{ form.as_p }}
+    {% if post %}
+        {% for img in post.images.all %}
+                  <img class="rounded mb-3" src="{{ img.image_file.url }}" alt="">
+                  <a href="{% url 'gym:delete_image' img.id %}">حذف تصویر</a>
+        {% endfor %}
+    {% endif %}
+<button class="btn btn-primary" type="submit">ذخیره</button>
+</form>
+
+{% endblock %}

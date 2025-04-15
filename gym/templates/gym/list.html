@@ -1,0 +1,59 @@
+{% extends 'parent/base.html' %}
+{% block title %}post list{% endblock %}
+{% load static %}
+
+{% block head %}    {% endblock %}
+
+
+{% block content %}
+
+        <h4 >دسته بندی</h4>
+        <!-- Category item -->
+        <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url("#"); background-position: center left; background-size: cover;">
+            <div class="bg-dark-overlay-4 p-3">
+                <a href="{% url 'gym:post_list_category' 'اطلاعات پرداخت' %}" class="stretched-link btn-link text-white h5">اطلاعات پرداخت</a>
+            </div>
+        </div>
+        <!-- Category item -->
+        <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(assets/images/blog/4by3/02.jpg); background-position: center left; background-size: cover;">
+            <div class="bg-dark-overlay-4 p-3">
+                <a href="{% url 'gym:post_list_category' 'این بادی' %}" class="stretched-link btn-link text-white h5">این بادی</a>
+            </div>
+        </div>
+        <!-- Category item -->
+        <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(assets/images/blog/4by3/03.jpg); background-position: center left; background-size: cover;">
+            <div class="bg-dark-overlay-4 p-3">
+                <a href="{% url 'gym:post_list_category' 'برنامه ورزشی' %}" class="stretched-link btn-link text-white h5">برنامه ورزشی</a>
+            </div>
+        </div>
+        <!-- Category item -->
+        <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(assets/images/blog/4by3/04.jpg); background-position: center left; background-size: cover;">
+            <div class="bg-dark-overlay-4 p-3">
+                <a href="{% url 'gym:post_list_category' 'برنامه غذایی' %}" >برنامه غذایی</a>
+            </div>
+        </div>
+        <!-- Category item -->
+            <a href="{% url 'gym:post_list_category' 'سایر' %}">سایر</a>
+            <br>
+            <h4>جدول اطلاعات ثبت شده</h4>
+            <!--  post item -->
+        <table style='width:80%; border:2px solid black; text-align: right; direction:rtl;'>
+          <tr>
+                <th>ردیف</th>
+                <th>مشاهده</th>
+                <th>ویرایش</th>
+                <th>حذف</th>
+         </tr>
+         {% for Costumer in posts %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td><a href="{{Costumer.get_absolute_url}}">{{Costumer.title}}</a></td>
+            <td><a href="{% url 'gym:edit_post' Costumer.id %}">ویرایش</a></td>
+            <td><a href="{% url 'gym:delete_post' Costumer.id %}">حذف </a></td>
+          </tr>  
+         {% endfor %} 
+        </table>
+{% for post in pop_posts %}
+			<img class="rounded" src="{{ post.images.first.image_file.url}}" alt="">
+{% endfor %}            
+{% endblock %}

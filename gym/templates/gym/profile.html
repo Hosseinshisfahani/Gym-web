@@ -1,0 +1,16 @@
+{% extends "parent/base.html" %}
+{% load static %}
+{% block title %}profile{% endblock %}
+{% block content %}
+
+<p><a href="{% url 'gym:create_post' %}"> ایجاد اطلاعات جدید</a></p>
+<p><a href="{% url 'gym:post_list' %}"> مشاهده دسته بندی ها</a></p>
+<br>
+    <a href="{% url 'gym:ticket' %}">ثبت تیکت</a>
+    <br>
+    <a href="{% url 'gym:password_change' %}">تغییر پسورد</a>
+    <br>
+    <a href="{% url 'gym:logout' %}">خروج</a>
+    <br>
+    <a class="dropdown-item" href="{% url 'gym:edit_account' %}">تغییر اطلاعات شخصی</a>
+{%endblock%}

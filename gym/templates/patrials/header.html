@@ -1,0 +1,18 @@
+{% load static %}
+
+<!-- Logo START -->
+<a class="navbar-brand" href="{% url 'gym:index' %}">
+    <img class="navbar-brand-item dark-mode-item" style="width: 160px; height: 80px" src="{% static 'images/logo.jpeg' %}" alt="logo">
+</a>
+<br>
+<!-- Logo END -->
+{% if request.user.is_authenticated %}
+    <a href="{% url 'gym:profile' %}" >{{request.user.username|default:request.user.username }}</a>
+    <br>
+{% else %}
+    <a href="{% url 'gym:login' %}">ورود</a>
+    <br>
+    <a href="{% url 'gym:register' %}">ثبت نام</a>
+{% endif %}
+
+<a class="dropdown-item" href="{% url 'gym:profile' %}">پروفایل من</a>
